@@ -9,8 +9,8 @@ from datetime import timedelta
 # third-party libraries
 
 # own libraries
-from financial_life.financing import accounts as a
-from financial_life.tax import germany as tax_ger
+from FinancialLife.financing import accounts as a
+from FinancialLife.tax import germany as tax_ger
 
 
 def controller_tax(s):

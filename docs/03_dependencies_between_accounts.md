@@ -13,7 +13,7 @@ You create a new object of type `Property`, in which you state the value of the 
 
 <img src="img/dependencies.png" alt="Dependency between loan and house" width="800">
 
-Here is the [example code](../financial_life/examples/dependencies.py)
+Here is the [example code](../FinancialLife/examples/dependencies.py)
 
 The class `Property` is defined in the following way:
 

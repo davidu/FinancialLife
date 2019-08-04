@@ -27,7 +27,7 @@ simulation.add_regular('Income', account, 2000,
                        )
 ```
 
-financial_life let's you add controller-functions to your simultions, which are executed every day before money is transfered between accounts. The controller-function is called with the simulation-object as argument:
+FinancialLife let's you add controller-functions to your simultions, which are executed every day before money is transfered between accounts. The controller-function is called with the simulation-object as argument:
 
 ```python
 def controller_tax(s):

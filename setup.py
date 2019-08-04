@@ -13,26 +13,26 @@ except ImportError:
     have_setuptools = False
 
 skw = dict(
-    name='financial_life',
+    name='FinancialLife',
     version='0.9.4',
     description='A framework for analysing financial products in personalized contexts',
     author='Martin Pyka',
     author_email='martin.pyka@gmail.com',
     maintainer='Martin Pyka',
     maintainer_email='martin.pyka@gmail.com',
-    url='https://github.com/MartinPyka/financial_life',
+    url='https://github.com/MartinPyka/FinancialLife',
     keywords=["finance", "analysis", "simulation", "loan", "bank"],
     license="Apache License, Version 2.0",
-    packages=['financial_life',
-              'financial_life.calendar_help',
-      	 	  'financial_life.examples',
-      	 	  'financial_life.financing',
-              'financial_life.products.germany.lbs',
-              'financial_life.reports',
-              'financial_life.tax.germany',
-              'financial_life.templates.html.standard',
+    packages=['FinancialLife',
+              'FinancialLife.calendar_help',
+      	 	  'FinancialLife.examples',
+      	 	  'FinancialLife.financing',
+              'FinancialLife.products.germany.lbs',
+              'FinancialLife.reports',
+              'FinancialLife.tax.germany',
+              'FinancialLife.templates.html.standard',
     ],
-    package_data={'financial_life': ['templates/html/standard/*.html']}
+    package_data={'FinancialLife': ['templates/html/standard/*.html']}
 )
 
 if have_setuptools is True:

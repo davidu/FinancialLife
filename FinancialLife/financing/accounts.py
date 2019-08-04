@@ -13,12 +13,12 @@ import logging
 # third-party libraries
 
 # own libraries
-from financial_life.financing import PaymentList
-from financial_life.financing import Report
-from financial_life.financing import C_default_payment
-from financial_life.calendar_help import Bank_Date, get_days_per_year
-from financial_life.financing import plotting as plt
-from financial_life.financing import validate
+from FinancialLife.financing import PaymentList
+from FinancialLife.financing import Report
+from FinancialLife.financing import C_default_payment
+from FinancialLife.calendar_help import Bank_Date, get_days_per_year
+from FinancialLife.financing import plotting as plt
+from FinancialLife.financing import validate
 
 logger = logging.getLogger(__name__)
 

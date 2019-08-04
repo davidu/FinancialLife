@@ -1,6 +1,6 @@
 # Documentation
 
-This documentations aims to introduce the user into the concepts of financial_life to start developing your own applications.
+This documentations aims to introduce the user into the concepts of FinancialLife to start developing your own applications.
 
 ## User guide
 

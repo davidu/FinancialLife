@@ -13,8 +13,8 @@ from collections import Callable
 # custom libraries
 
 # own libraries
-from financial_life.financing.identity import id_generator
-from financial_life.calendar_help import Bank_Date
+from FinancialLife.financing.identity import id_generator
+from FinancialLife.calendar_help import Bank_Date
 
 
 date_formats = [

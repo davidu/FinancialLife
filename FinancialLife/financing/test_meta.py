@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 import unittest
 
 # own libraries
-from financial_life.examples import meta_data
+from FinancialLife.examples import meta_data
 
 class Test(unittest.TestCase):
 

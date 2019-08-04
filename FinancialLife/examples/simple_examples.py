@@ -11,8 +11,8 @@ import os
 from matplotlib.pyplot import show
 
 # own libraries
-from financial_life.financing import accounts as a
-from financial_life.reports import html
+from FinancialLife.financing import accounts as a
+from FinancialLife.reports import html
 
 def example1():
     # create a private bank account and a loan

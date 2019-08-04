@@ -7,7 +7,7 @@ A framework for analysing financial products in personalized contexts
 	Latest Release
 	</td>
 	<td>
-	<img src="https://img.shields.io/pypi/v/financial_life.svg" alt="latest release" />
+	<img src="https://img.shields.io/pypi/v/FinancialLife.svg" alt="latest release" />
 	</td>
 </tr>
 <table>
@@ -16,7 +16,7 @@ A framework for analysing financial products in personalized contexts
 
 # Description
 
-financial_life is an opinionated framework written in Python that allows to simulate monetary flows between different types of accounts. These simulations allow a deeper understanding of financial plans and a better comparison of financial products (in particular loan conditions) for personal circumstances. With financial_life you can
+FinancialLife is an opinionated framework written in Python that allows to simulate monetary flows between different types of accounts. These simulations allow a deeper understanding of financial plans and a better comparison of financial products (in particular loan conditions) for personal circumstances. With FinancialLife you can
 
 * analyse loan conditions and payment strategies
 * describe the properties of your financial plans with a few lines of code
@@ -29,7 +29,7 @@ View [documentation](docs/README.md) for a more detailed introduction.
 Say you want to model an account with regular income and payments to a loan
 
 ```python
-from financial_life.financing import accounts as a
+from FinancialLife.financing import accounts as a
 from datetime import timedelta, datetime
 
 # create a private bank account and a loan account
@@ -60,7 +60,7 @@ print("Interests on loan account: %.2f" % sum(loan.report.yearly().interest))
 
 The output will look like this:
 
-<img src="docs/img/simple_example_01_small.png" alt="Simple simulation in financial_life" width="800">
+<img src="docs/img/simple_example_01_small.png" alt="Simple simulation in FinancialLife" width="800">
 
 
 	Main account
@@ -93,7 +93,7 @@ The output will look like this:
 	Interests on bank account: 374.45
 	Interests on loan account: -2853.30
 
-Now let's say, we put some money on a special savings account with better interests, because we want to purchase in two years a car. With financial_life, you just add the necessary changes to your model.
+Now let's say, we put some money on a special savings account with better interests, because we want to purchase in two years a car. With FinancialLife, you just add the necessary changes to your model.
 
 ```python
 # create new account
@@ -112,62 +112,62 @@ simulation.add_unique(savings, 'Vendor of a car', 10000, '17.03.2019')
 
 The plot will now include the savings-account as well.
 
-<img src="docs/img/simple_example_02_small.png" alt="Simple simulation in financial_life" width="800">
+<img src="docs/img/simple_example_02_small.png" alt="Simple simulation in FinancialLife" width="800">
 
 You can also export the simulation to HTML to explore your model in the browser:
 
 ```python
-from financial_life.reports import html
+from FinancialLife.reports import html
 
 html.report(simulation, style="standard", output_dir = result_folder)
 ```
 
-<img src="docs/img/html_summary_01.png" alt="Simple simulation in financial_life" width="800" height="407">
+<img src="docs/img/html_summary_01.png" alt="Simple simulation in FinancialLife" width="800" height="407">
 
 You can analyse the reports as [pandas](https://github.com/pandas-dev/pandas) DataFrame as well and export it to excel:
 
 ```python
 import pandas as pd
-from financial_life.reports import excel
+from FinancialLife.reports import excel
 
 account.report.as_df()    # Hello pandas
 excel.report(simulation, filename='reports.xls')  # explore the results in excel
 
 ```
 
-[Here](financial_life/examples/README.md) are more examples. financial_life supports:
-* [dependencies between accounts](financial_life/examples/dependencies.py), e.g. to model how the ownership of a property rises when the loan decreases
-* [meta-data](financial_life/examples/meta_data.md), e.g. for writing tax-calculations, which require additional knowledge about your payments
-* [controller-functions](financial_life/examples/meta_data.md) for dynamic changes of the simulation properties during simulation
+[Here](FinancialLife/examples/README.md) are more examples. FinancialLife supports:
+* [dependencies between accounts](FinancialLife/examples/dependencies.py), e.g. to model how the ownership of a property rises when the loan decreases
+* [meta-data](FinancialLife/examples/meta_data.md), e.g. for writing tax-calculations, which require additional knowledge about your payments
+* [controller-functions](FinancialLife/examples/meta_data.md) for dynamic changes of the simulation properties during simulation
 
 # Installation
 
-financial_life is available in version 0.9.2. It is written in Python 3.4 and has not been tested for Python 2.x.
+FinancialLife is available in version 0.9.2. It is written in Python 3.4 and has not been tested for Python 2.x.
 
 To get a working environment, simply do
 
-	git clone https://github.com/MartinPyka/financial_life.git
-	cd financial_life
+	git clone https://github.com/MartinPyka/FinancialLife.git
+	cd FinancialLife
 	virtualenv venv
 	source venv/bin/activate
 	pip install -r requirements.txt
 	# test an example
-	python financial_life/examples/simple_examples.py
+	python FinancialLife/examples/simple_examples.py
 
 For installing the package:
 
-	git clone https://github.com/MartinPyka/financial_life.git
-	cd financial_life
+	git clone https://github.com/MartinPyka/FinancialLife.git
+	cd FinancialLife
 	python setup.py install
 
 Or use pip
 
- 	pip install financial_life
+ 	pip install FinancialLife
 
 You can checkout the example with
 
-	python financial_life/examples/simple_examples.py
+	python FinancialLife/examples/simple_examples.py
 
-# Why financial_life
+# Why FinancialLife
 
-financial_life was designed with the idea in mind that any line of code should contribute to the description of the problem you want to model. In spreadsheets, you would deal with a lot of auxiliary tables to accurately calculate the course of a loan influenced by incoming payments and generated interests. In financial_life, you just create your loan account with the given interests rate and you define the regular payments going into this loan account. That's it. Changes in the model and the exploration of different parameters within this model are therefore way easier to accomplish than in a spreadsheet-based simulation.
+FinancialLife was designed with the idea in mind that any line of code should contribute to the description of the problem you want to model. In spreadsheets, you would deal with a lot of auxiliary tables to accurately calculate the course of a loan influenced by incoming payments and generated interests. In FinancialLife, you just create your loan account with the given interests rate and you define the regular payments going into this loan account. That's it. Changes in the model and the exploration of different parameters within this model are therefore way easier to accomplish than in a spreadsheet-based simulation.

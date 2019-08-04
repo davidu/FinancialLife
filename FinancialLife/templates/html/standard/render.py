@@ -12,8 +12,8 @@ from datetime import datetime
 from  jinja2 import Template
 
 # own libraries
-from financial_life.financing import plotting as plt
-from financial_life.reports import sl
+from FinancialLife.financing import plotting as plt
+from FinancialLife.reports import sl
 
 path_img = 'img'
 path_accounts = 'accounts'

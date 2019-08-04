@@ -16,9 +16,9 @@ from numpy.core.numeric import result_type
 import pandas as pd
 
 # own libraries
-from financial_life.calendar_help import Bank_Date
-from financial_life.financing.identity import id_generator
-from financial_life.financing import validate
+from FinancialLife.calendar_help import Bank_Date
+from FinancialLife.financing.identity import id_generator
+from FinancialLife.financing import validate
 
 pd.set_option('display.width', 1000)
 

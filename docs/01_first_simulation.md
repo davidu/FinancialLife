@@ -2,7 +2,7 @@
 
 In this chapter, we are going to introduce the basic concepts of creating a simulation in order to analyse monetary flows and growth on bank accounts.
 
-In the following, financial_life will be abbreviated with fl.
+In the following, FinancialLife will be abbreviated with fl.
 
 Each simulation setup can be devided into three different steps:
 
@@ -14,7 +14,7 @@ After that you have several options to explore the outcome of your simulation.
 
 ## 1. Define the accounts involved in the simulation
 
-The module `financial_life.financing.accounts` features some basic accounts like a normal bank account with yearly interests and a loan account that does not allow to be in the positive value range and only permits money transferd to the account but not from the account.
+The module `FinancialLife.financing.accounts` features some basic accounts like a normal bank account with yearly interests and a loan account that does not allow to be in the positive value range and only permits money transferd to the account but not from the account.
 
 The package also contains a Property account that establishes a dependency to a loan account. We will come to that later.
 
@@ -72,7 +72,7 @@ class Bank_Account(Account):
 So an ordinary bank account with a volume of 1000 and an interest rate of 0.1% is defined like this.
 
 ```python
-from financial_life.financing import accounts as a
+from FinancialLife.financing import accounts as a
 
 account = a.Bank_Account(amount = 1000,
                          interest = 0.001,
@@ -95,7 +95,7 @@ simulation = a.Simulation(account, loan)
 
 Next. we define monetary flows between these accounts. Here, we will introduce the methods for regular and unique payments but we will cover only a part of it. In later chapters, we will dig deeper into the kind of stuff that you can create with it.
 
-The simulation class is also defined in `financial_life.financing.accounts` and looks like this
+The simulation class is also defined in `FinancialLife.financing.accounts` and looks like this
 
 ```python
 def add_regular(self, from_acc, to_acc, payment, interval,

@@ -10,7 +10,7 @@ import os
 import pandas as pd
 
 # own libraries
-from financial_life.reports import sl
+from FinancialLife.reports import sl
 
 def report(simulation, filename='report.xls'):
     """ This function generates a report as an excel sheet.
