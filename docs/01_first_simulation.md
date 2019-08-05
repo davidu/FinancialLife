@@ -18,10 +18,10 @@ The module `FinancialLife.financing.accounts` features some basic accounts like 
 
 The package also contains a Property account that establishes a dependency to a loan account. We will come to that later.
 
-Lets start with creating an ordinary bank account, which you would use to receive your salary and pay your bills. This account is called `Bank_Account` and it is defined in the following way:
+Lets start with creating an ordinary bank account, which you would use to receive your salary and pay your bills. This account is called `BankAccount` and it is defined in the following way:
 
 ```python
-class Bank_Account(Account):
+class BankAccount(Account):
     """ This is a normal bank account that can be used to manage income and
     outgoings within a normal household """
     def __init__(self, amount, interest, date = None, name = None):
@@ -74,7 +74,7 @@ So an ordinary bank account with a volume of 1000 and an interest rate of 0.1% i
 ```python
 from FinancialLife.financing import accounts as a
 
-account = a.Bank_Account(amount = 1000,
+account = a.BankAccount(amount = 1000,
                          interest = 0.001,
                          name = 'Main account')
 ```
@@ -261,7 +261,7 @@ html.report(simulation, style="standard", output_dir = result_folder)
 And here is the code for the simulation again as a whole
 
 ```python
-account = a.Bank_Account(amount = 1000, interest = 0.001, name = 'Main account')
+account = a.BankAccount(amount = 1000, interest = 0.001, name = 'Main account')
 loan = a.Loan(amount = 100000, interest = 0.01, name = 'House Credit')
 
 simulation = a.Simulation(account, loan)

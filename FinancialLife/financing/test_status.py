@@ -18,8 +18,8 @@ class Test(unittest.TestCase):
     def setUp(self):
         """ Create setup for making sure that meta-data are
         transfered to the status of payments """
-        account = a.Bank_Account(amount = 1000, interest = 0.001, name = 'Main account', date=datetime(2016,9, 1))
-        savings = a.Bank_Account(amount = 5000, interest = 0.013, name = 'Savings', date=datetime(2016,9, 1))
+        account = a.BankAccount(amount = 1000, interest = 0.001, name = 'Main account', date=datetime(2016,9, 1))
+        savings = a.BankAccount(amount = 5000, interest = 0.013, name = 'Savings', date=datetime(2016,9, 1))
         loan = a.Loan(amount = 100000, interest = 0.01, name = 'House Credit', date=datetime(2016,9, 1))
 
         simulation = a.Simulation(account, savings, loan, name = 'Testsimulation', date=datetime(2016,9, 1))

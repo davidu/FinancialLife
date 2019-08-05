@@ -16,7 +16,7 @@ from FinancialLife.reports import html
 
 def example1():
     # create a private bank account and a loan
-    account = a.Bank_Account(amount = 1000, interest = 0.001, name = 'Main account')
+    account = a.BankAccount(amount = 1000, interest = 0.001, name = 'Main account')
     loan = a.Loan(amount = 100000, interest = 0.01, name = 'House Credit')
 
     # add these accounts to the simulation
@@ -48,8 +48,8 @@ def example1():
 
 def example2():
     # create a private bank account and a loan
-    account = a.Bank_Account(amount = 1000, interest = 0.001, name = 'Main account')
-    savings = a.Bank_Account(amount = 5000, interest = 0.007, name = 'Savings')
+    account = a.BankAccount(amount = 1000, interest = 0.001, name = 'Main account')
+    savings = a.BankAccount(amount = 5000, interest = 0.007, name = 'Savings')
     loan = a.Loan(amount = 100000, interest = 0.01, name = 'House Credit')
 
     # add these accounts to the simulation
@@ -82,8 +82,8 @@ def example2():
     show()
 
 def example3():
-    account = a.Bank_Account(amount = 1000, interest = 0.001, name = 'Main account')
-    savings = a.Bank_Account(amount = 5000, interest = 0.013, name = 'Savings')
+    account = a.BankAccount(amount = 1000, interest = 0.001, name = 'Main account')
+    savings = a.BankAccount(amount = 5000, interest = 0.013, name = 'Savings')
     loan = a.Loan(amount = 100000, interest = 0.01, name = 'House Credit')
 
     simulation = a.Simulation(account, savings, loan, name = 'Testsimulation')

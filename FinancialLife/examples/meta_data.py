@@ -73,7 +73,7 @@ def controller_tax(s):
 def example_meta_controller(print_it = True):
     """ This example shows, how meta-information for payments and account data could
     be used to calculate annual tax-return """
-    account = a.Bank_Account(amount = 1000, interest = 0.001, name = 'Main account', date="01.09.2016")
+    account = a.BankAccount(amount = 1000, interest = 0.001, name = 'Main account', date="01.09.2016")
     
     # define meta-data for accounts. here: some fields that are relevant for 
     # tax calculations 

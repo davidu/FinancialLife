@@ -734,7 +734,7 @@ class DummyAccount(Account):
 # in these classes, report gets some semantic information about how to handle different
 # properties of the class
 
-class Bank_Account(Account):
+class BankAccount(Account):
     """ This is a normal bank account that can be used to manage income and
     outgoings within a normal household """
 
@@ -755,7 +755,7 @@ class Bank_Account(Account):
         self._report.add_semantics('kind', 'none')
         self._report.add_semantics('description', 'none')
 
-        self._interest_paydate = {'month': 12, 'day': 31}
+        self._interest_paydate = {'month': 12, 'day': 1}
         # reporting functionality
         self._report_interest = 0
 
@@ -784,7 +784,7 @@ class Bank_Account(Account):
         self._caccount = int(round(self._caccount + self._sum_interest))
         self.make_report(
                          interest = self._sum_interest,
-                         kind = 'yearly interest'
+                         kind = 'interest'
                          )
         self._sum_interest = 0
 
@@ -822,8 +822,9 @@ class Bank_Account(Account):
 
     def interest_time(self):
         """ Checks, whether it is time to book the interests to the account """
-        return ((self._current_date.day == self._interest_paydate['day']) and
-                (self._current_date.month == self._interest_paydate['month']))
+        return (self._current_date.day == self._interest_paydate['day'])
+#        return ((self._current_date.day == self._interest_paydate['day']) and
+#                (self._current_date.month == self._interest_paydate['month']))
 
     def payment_input(self, account_str, payment, kind, description, meta):
         """ Input function for payments. This account is the receiver
@@ -917,7 +918,7 @@ class Loan(Account):
         self._report.add_semantics('kind', 'none')
         self._report.add_semantics('description', 'none')
 
-        self._interest_paydate = {'month': 12, 'day': 31}
+        self._interest_paydate = {'month': 12, 'day': 1}
 
         self.make_report()
 
@@ -981,15 +982,17 @@ class Loan(Account):
         self._caccount = int(round(self._caccount + self._sum_interest))
         self.make_report(
                          interest = self._sum_interest,
-                         kind = 'yearly interest'
+                         kind = 'interest'
                          )
         self._sum_interest = 0
 
     def interest_time(self):
         """ Checks, whether it is time to book the interests to the account """
-        return (((self._current_date.day == self._interest_paydate['day']) and
-                (self._current_date.month == self._interest_paydate['month'])) or
+        return ((self._current_date.day == self._interest_paydate['day']) or
                 (self._caccount > 0))
+        #return (((self._current_date.day == self._interest_paydate['day']) and
+        #        (self._current_date.month == self._interest_paydate['month'])) or
+        #        (self._caccount > 0))
 
     def payment_input(self, account_str, payment, kind, description, meta):
         """ Input function for payments. This account is the receiver

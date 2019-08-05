@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Finanzuebersicht</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+
+<h2>Kalkulation: /Users/du/src/FinancialLife/FinancialLife/examples/example2</h2>
+<p>04.08.2019 - 20:03:00</p>
+
+
+<div class="col-md-6">
+<img alt="" width="100%" src="/Users/du/src/FinancialLife/FinancialLife/examples/example2/img/wealth.png">
+</div>
+<div class="col-md-6">
+<img alt="" width="100%" src="/Users/du/src/FinancialLife/FinancialLife/examples/example2/img/debts.png">
+</div>
+<div class="col-md-6">
+<img alt="" width="100%" src="/Users/du/src/FinancialLife/FinancialLife/examples/example2/img/io_money.png">
+</div>
+<div class="col-md-6">
+<img alt="" width="100%" src="/Users/du/src/FinancialLife/FinancialLife/examples/example2/img/debtpayment.png">
+</div>
+<div class="col-md-6">
+<img alt="" width="100%" src="/Users/du/src/FinancialLife/FinancialLife/examples/example2/img/win_cum.png">
+</div>
+<div class="col-md-6">
+<img alt="" width="100%" src="/Users/du/src/FinancialLife/FinancialLife/examples/example2/img/cost_cum.png">
+</div>
+
+
+<div class="col-md-8">
+	<h3>Accounts</h3>
+	<table class="table">
+	  <tr>
+	  	  <th>No.</th>
+		  <th>name</th>
+		  <th>type</th>
+		  <th>start value</th>
+		  <th>start date</th>
+	  </tr>
+
+	  
+	  <tr>
+	  	  <td>0</td>
+		  <td><a href="accounts/account_details_000_Checking.html">Checking</a></td>
+		  <td>BankAccount</td>
+		  <td>50,000.00</td>
+		  <td>2019-08-04</td>
+	  </tr>
+	  
+	  <tr>
+	  	  <td>1</td>
+		  <td><a href="accounts/account_details_001_Savings.html">Savings</a></td>
+		  <td>BankAccount</td>
+		  <td>5,000,000.00</td>
+		  <td>2019-08-04</td>
+	  </tr>
+	  
+	  <tr>
+	  	  <td>2</td>
+		  <td><a href="accounts/account_details_002_Refinanced Cash.html">Refinanced Cash</a></td>
+		  <td>Loan</td>
+		  <td>-4,000,000.00</td>
+		  <td>2019-08-04</td>
+	  </tr>
+	   
+	</table>
+</div>
+<div class="col-md-8">
+	<h3>Regular Payments</h3>
+	<table class="table">
+	  <tr>
+		  <th>from</th>
+		  <th>to</th>
+		  <th>interval</th>
+		  <th>day</th>
+		  <th>start date</th>
+		  <th>stop date</th>
+		  <th>payment</th>
+		  <th>name</th>
+		  <th>fixed</th>
+	  </tr>
+
+	  
+	  <tr>
+		  <td>Income</td>
+		  <td>Checking</td>
+		  <td>monthly</td>
+		  <td>1</td>
+		  <td>1971-01-01</td>
+		  <td>9999-12-31</td>
+		  <td>80000.00</td>
+		  <td></td>
+		  <td>False</td>
+	  </tr>
+	  
+	  <tr>
+		  <td>Checking</td>
+		  <td>Savings</td>
+		  <td>monthly</td>
+		  <td>1</td>
+		  <td>1971-01-01</td>
+		  <td>9999-12-31</td>
+		  <td>20000.00</td>
+		  <td></td>
+		  <td>False</td>
+	  </tr>
+	  
+	  <tr>
+		  <td>Checking</td>
+		  <td>Refinanced Cash</td>
+		  <td>monthly</td>
+		  <td>1</td>
+		  <td>1971-01-01</td>
+		  <td>9999-12-31</td>
+		  <td>dynamic</td>
+		  <td></td>
+		  <td>False</td>
+	  </tr>
+	   
+	</table>
+</div>
+<div class="col-md-8">
+	<h3>Unique Payments</h3>
+	<table class="table">
+	  <tr>
+		  <th>from</th>
+		  <th>to</th>
+		  <th>date</th>
+		  <th>payment</th>
+		  <th>name</th>
+		  <th>fixed</th>
+	  </tr>
+	  
+	  <tr>
+		  <td>Savings</td>
+		  <td>Vendor for car</td>
+		  <td>2019-03-17</td>
+		  <td>10000.00</td>
+		  <td></td>
+		  <td>False</td>
+	  </tr>
+	  
+	</table>
+</div>
+
+</body>
+</html>

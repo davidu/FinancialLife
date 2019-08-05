@@ -33,7 +33,7 @@ from FinancialLife.financing import accounts as a
 from datetime import timedelta, datetime
 
 # create a private bank account and a loan account
-account = a.Bank_Account(amount = 1000, interest = 0.001, name = 'Main account')
+account = a.BankAccount(amount = 1000, interest = 0.001, name = 'Main account')
 loan = a.Loan(amount = 100000, interest = 0.01, name = 'House Credit')
 
 # add these accounts to the simulation
@@ -97,7 +97,7 @@ Now let's say, we put some money on a special savings account with better intere
 
 ```python
 # create new account
-savings = a.Bank_Account(amount = 5000, interest = 0.007, name = 'Savings')
+savings = a.BankAccount(amount = 5000, interest = 0.007, name = 'Savings')
 
 # add it to the simulation (or create a new simulation with all three accounts)
 simulation.add_account(savings)
