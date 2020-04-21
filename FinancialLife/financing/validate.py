@@ -18,12 +18,7 @@ from FinancialLife.calendar_help import Bank_Date
 
 
 date_formats = [
-                '%d.%m.%Y',
-                '%d.%m.%y',
-                '%m/%d/%Y',
-                '%m/%d/%y',
                 '%Y-%m-%d',
-                '%y-%m-%d',
                 ]
 
 def parse_datestring(datestr):
@@ -38,6 +33,7 @@ def parse_datestring(datestr):
 def valid_date(date):
     """ routine for making a date out of anything that the user might
     have given to the function """
+    
     if date is None:
         return Bank_Date.today()
     if isinstance(date, Bank_Date):

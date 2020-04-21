@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 from collections import Callable
 import warnings
 import logging
+import pprint
 
 # third-party libraries
 
@@ -187,7 +188,7 @@ class Simulation(object):
             item = [status.strdate,
                     status._data['from_acc'].name,
                     status._data['to_acc'].name,
-                    '%.02f EUR' % status._data['value'],
+                    '%.02f USD' % status._data['value'],
                     status._data['kind'],
                     status._data['name'],
                     status._data['code'],
@@ -271,7 +272,9 @@ class Simulation(object):
 
         try:
             self._next_pay = next(self._payments_iter, C_default_payment)
+            #print("Next Pay: ", self._next_pay)
         except StopIteration:
+            print("No payments! StopIteration!")
             # if there are no payments, create a date for a payment
             # that lies in the distant future
             self._next_pay = [{'date': Bank_Date.max}]
@@ -470,11 +473,12 @@ class Simulation(object):
 
         if (not self._payments_iter):
             self._payments_iter = self._payments.payment(self._current_date)
-
         if (not self._next_pay):
             try:
                 self._next_pay = next(self._payments_iter, C_default_payment)
+                print("Next pay: ",self._next_pay)
             except StopIteration:
+                print("No payments! StopIteration!")
                 # if there are no payments, create a date for a payment
                 # that lies in the distant future
                 self._next_pay = [{'date': Bank_Date.max}]
@@ -490,6 +494,7 @@ class Simulation(object):
             # 0. set the current day
             for account in self._accounts:
                 if account._date_start <= self._current_date:
+                    #account.set_date(self._current_date)
                     account.set_date(self._current_date)
 
             # 1. execute start-of-day function
@@ -503,10 +508,22 @@ class Simulation(object):
                 controller(self)
 
             # 3. apply all payments for the day in correct temporal order
-            if self._next_pay[0]['date'].date() == self._current_date.date():
-                for payment in self._next_pay:
-                    self.make_transfer(payment)
-                self._next_pay = next(self._payments_iter, C_default_payment)
+            #print("Type of _next_pay: ",type(self._next_pay), "Len: ", len(self._next_pay))
+            pp = pprint.PrettyPrinter(indent=4)
+            #pp.pprint(self._next_pay)
+            if isinstance(self._next_pay, tuple):
+                #print('Tuple! ', self._next_pay)
+                if len(self._next_pay) > 0 and self._next_pay[0]['date'].date() == self._current_date.date():
+                    for payment in self._next_pay:
+                        self.make_transfer(payment)
+                    self._next_pay = next(self._payments_iter, C_default_payment)
+            if isinstance(self._next_pay, dict):
+                #print('Dict! ', self._next_pay)
+                if len(self._next_pay) > 0 and self._next_pay['date'].date() == self._current_date.date():
+                    for payment in self._next_pay:
+                        self.make_transfer(payment)
+                    self._next_pay = next(self._payments_iter, C_default_payment)
+
 
             # 4. execute end-of-day function
             # everything that should happen after the money transfer
@@ -554,7 +571,7 @@ class Account(object):
     """
 
     def __init__(self, amount, interest, date=None, name = None, meta = {}):
-
+        
         self._date_start = validate.valid_date(date)
         self._name = validate.valid_name(name)
         self._meta = meta
@@ -700,8 +717,8 @@ class Account(object):
         # if there is an inconsistency in the date progression, report
         # a warning on the command line
         delta = (date - self._current_date).days
-        if delta != 1:
-            warnings.warn('Difference between current date and next date is %i and not 1' % delta)
+        #if delta != 1:
+        #    warnings.warn('Difference between current date and next date is %i and not 1' % delta)
         if date < self._date_start:
             warnings.warn('Date is before start date of account.')
 
@@ -802,20 +819,20 @@ class BankAccount(Account):
             for status in report._statuses:
                 item = [status.strdate, status._status['foreign_account'],
                     status._status['description'],
-                    '%.02f EUR' % status._status['input'],
-                    '%.02f EUR' % status._status['output'],
-                    '%.02f EUR' % status._status['interest'],
-                    '%.02f EUR' % status._status['account']]
+                    '%.02f USD' % status._status['input'],
+                    '%.02f USD' % status._status['output'],
+                    '%.02f USD' % status._status['interest'],
+                    '%.02f USD' % status._status['account']]
                 rows.append(item)
         else:
             header = ['date', 'input', 'output', 'interest', 'account']
 
             for status in report._statuses:
                 item = [status.strdate,
-                    '%.02f EUR' % status._status['input'],
-                    '%.02f EUR' % status._status['output'],
-                    '%.02f EUR' % status._status['interest'],
-                    '%.02f EUR' % status._status['account']]
+                    '%.02f USD' % status._status['input'],
+                    '%.02f USD' % status._status['output'],
+                    '%.02f USD' % status._status['interest'],
+                    '%.02f USD' % status._status['account']]
                 rows.append(item)
 
         return {'header': header, 'rows': rows}
@@ -935,17 +952,17 @@ class Loan(Account):
                 item = [status.strdate,
                         status._status['foreign_account'],
                         status._status['description'],
-                        '%.02f EUR' % status._status['payment'],
-                        '%.02f EUR' % status._status['interest'],
-                        '%.02f EUR' % status._status['account']]
+                        '%.02f USD' % status._status['payment'],
+                        '%.02f USD' % status._status['interest'],
+                        '%.02f USD' % status._status['account']]
                 rows.append(item)
         else:
             header = ['date', 'payment', 'interest', 'account']
             for status in report._statuses:
                 item = [status.strdate,
-                        '%.02f EUR' % status._status['payment'],
-                        '%.02f EUR' % status._status['interest'],
-                        '%.02f EUR' % status._status['account']]
+                        '%.02f USD' % status._status['payment'],
+                        '%.02f USD' % status._status['interest'],
+                        '%.02f USD' % status._status['account']]
                 rows.append(item)
         return {'header': header, 'rows': rows}
 

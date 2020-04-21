@@ -14,6 +14,7 @@ from tabulate import tabulate
 import numpy as np
 from numpy.core.numeric import result_type
 import pandas as pd
+import pprint
 
 # own libraries
 from FinancialLife.calendar_help import Bank_Date
@@ -521,6 +522,9 @@ class Payment_Value(object):
         if isinstance(payment, Callable):
             self._name = "dynamic"
 
+    def __str__(self):
+        return '${:,.2f}'.format(self._payment)
+
     @property
     def name(self):
         return self._name
@@ -557,6 +561,9 @@ class Payment(object):
                      'fixed': fixed,
                      'meta': meta
                      }
+
+    def __str__(self):
+        return 'Name: {} Kind: {} Date: {} From: {} To: {} Amt: {}'.format(self._data['name'], self._data['kind'], self._data['date'], self._data['from_acc'], self._data['to_acc'], self._data['payment'])
 
     @property
     def from_acc(self):
@@ -701,34 +708,48 @@ class PaymentList(object):
     def payment(self, start_date):
         """ returns an interator that iterates through all
         payments """
-
+        pp = pprint.PrettyPrinter(indent=4)
         assert isinstance(start_date, datetime), "start_date must be of type datetime"
         # creates for each item an iterator that returns just this
         # item. this list is later on amended by iterators for regular
         # payments
         iters = [iter([u]) for u in self._uniques if u['date']>= start_date]
+        #pp.pprint("Iters:\n")
+        #pp.pprint(iters)
         for r in self._regular:
             # creates an iterator based on the interval in r
             iters.append(C_interval[r['interval']](r, start_date))
+        #pp.pprint("Iters 2:\n")
+        #pp.pprint(iters)
 
         # list of next dates. this list is inline with the iters list
         # the second parameter in next prevents the command to raise a
         # StopIteration Exception
         dates = [next(iter, C_default_payment) for iter in iters]
-
+        #pp.pprint("Dates:\n")
+        #pp.pprint(dates)
         # as long as there is still a date, below infinity
-        min_date = min(dates, key = lambda d: d['date'])
+        
+        min_date = {}
+        if len(dates) > 0:
+            try: 
+                min_date = min(dates, key = lambda d: d['date'])
+            except: 
+                min_date['date'] = Bank_Date.max
+        else:
+            min_date['date'] = Bank_Date.max
 
         # in this routine, the next command must be called after yield, as there might
         # be some callables which need to be called right after the payments, but not
         # before
         while min_date['date'] != Bank_Date.max:
-            # find all indices and payments in the list that have the same daet
+            # find all indices and payments in the list that have the same date
             indices, payments = zip(*[(i, d) for (i, d) in enumerate(dates) if (d['date'].date() == min_date['date'].date())])
             yield payments
             for i in indices:
                 dates[i] = next(iters[i], C_default_payment)
             min_date = min(dates, key = lambda d: d['date'])
+
 
 class Currency():
     """ Standard class for currencies to assure correct computing
